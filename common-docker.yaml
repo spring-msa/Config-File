@@ -1,0 +1,26 @@
+spring:
+  boot:
+    admin:
+      client:
+        auto-registration: true
+        url: ${SPRING_BOOT_ADMIN_URI:http://host.docker.internal:9090}
+        instance:
+          service-url: ${EUREKA_URI:http://host.docker.internal:8761}
+          name: ${spring.application.name}:${server.port}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  info:
+    env:
+      enabled: true
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://host.docker.internal:8761}/eureka/
+    register-with-eureka: true
+    fetch-registry: true
