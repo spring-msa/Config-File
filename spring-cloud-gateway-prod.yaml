@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: spring-cloud-gateway
+
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: image-service
+            uri: lb://image-service
+            predicates:
+              - Path=/images/**
+
+  boot:
+    admin:
+      client:
+        auto-registration: true
+        url: http://host.docker.internal:9090
+        instance:
+          service-url: http://host.docker.internal:80
+          name: Spring Cloud Gateway
+
+server:
+  port: 80
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+  info:
+    env:
+      enabled: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://host.docker.internal:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
+
+
