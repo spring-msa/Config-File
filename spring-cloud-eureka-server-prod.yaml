@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: spring-cloud-eureka-server
+  boot:
+    admin:
+      client:
+        auto-registration: true
+        url: ${SPRING_BOOT_ADMIN_URI:http://host.docker.internal:9090}
+        instance:
+          service-url: ${EUREKA_URI:http://host.docker.internal:8761}
+          name: ${spring.application.name}:${server.port}
+
+
+server:
+  port: ${PORT:8761}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, metrics, loggers, info, env
+  endpoint:
+    health:
+      show-details: always
+  info:
+    env:
+      enabled: true
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://host.docker.internal:8761}/eureka/
+    registerWithEureka: false
+    fetchRegistry: false
