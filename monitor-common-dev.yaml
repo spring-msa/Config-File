@@ -1,0 +1,33 @@
+spring:
+  boot:
+    admin:
+      client:
+        auto-registration: true
+        url: ${SPRING_BOOT_ADMIN_URI:http://localhost:9090}
+        instance:
+          service-url: ${EUREKA_URI:http://localhost}:${server.port}
+          name: ${spring.application.name}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  info:
+    env:
+      enabled: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/
+
+    register-with-eureka: true
+    fetch-registry: true
+
+  instance:
+    hostname: localhost
+    prefer-ip-address: false
+    instance-id: ${spring.application.name}:${random.uuid}
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 10
