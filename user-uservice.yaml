@@ -10,7 +10,7 @@ spring:
           name: User Service
   
   datasource:
-    url: jdbc:mariadb://mariadb:3306/twitter_clone
+    url: jdbc:mariadb://mariadb/twitter_clone
     username: root
     password: root
     driver-class-name: org.mariadb.jdbc.Driver
