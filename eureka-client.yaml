@@ -1,0 +1,14 @@
+eureka:
+  client:
+    serviceUrl:
+      # The Eureka server's URL, including the port number
+      defaultZone: eureka:8761/eureka/
+
+    # Not Registering with Eureka
+    register-with-eureka: true
+    fetch-registry: true
+
+  instance:
+    prefer-ip-address: false
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 10
