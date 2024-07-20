@@ -9,7 +9,7 @@ spring:
         auto-registration: true
         url: http://spring-boot-admin:9090
         instance:
-          service-url: http://localhost:8761
+          service-url: http://spring-eureka:8761
           name: Spring Cloud Eureka Server
         
 # Management
